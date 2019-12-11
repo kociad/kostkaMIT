@@ -11,17 +11,17 @@ int main(void)
     DDRD = DDRD | (1 << PD2);
     DDRD = DDRD | (1 << PD3);
     DDRD = DDRD | (1 << PD4);
-    DDRD = DDRD | (1 << PD5);
+    DDRD = DDRD | (1 << PD5); //Nastaví PD5 jako výstup
     DDRD = DDRD | (1 << PD6);
-    DDRB = DDRB & ~(1 << PB7);
-    PORTB = PORTB | (1 << PB7);
+    DDRB = DDRB & ~(1 << PB7); 
+    PORTB = PORTB | (1 << PB7); //PIN7 je vstup s rezistorem
 
     while (1) {
-        if (!(PINB & (1 << PB7)))
+        if (!(PINB & (1 << PB7))) //Změna nastane při puštění tlačítka
         {
-        switch(rand()%7)
+        switch(rand()%7) //vybere náhodně z 6ti případů
         {
-            case 0:
+            case 0: //případ 0
                 PORTD = 0b01110111;
                 break;
             case 1:
